@@ -3,14 +3,14 @@ using namespace std;
 class student
 {
 private:
-    string name, roll_no, marks1, marks2,marks3, marks4,marks5,marks6;
+    string name, roll_no, OOP, DBMS,CN, OS,ML;
 
 public:
     void menu();
     void insert();
     void display();
     void modify();
-    
+   
 };
 void student::menu()
 {
@@ -19,17 +19,17 @@ menustart:
     char x;
     (void)system("cls");
 
-    cout << "\t\t\t-----------------------------" << endl;
-    cout << "\t\t\t| STUDENT MANAGEMENT SYSTEM |" << endl;
-    cout << "\t\t\t-----------------------------" << endl;
-    cout << "\t\t\t 1. Enter New Record" << endl;
-    cout << "\t\t\t 2. Display Record" << endl;
-    cout << "\t\t\t 3. Modify Record" << endl;
-    cout << "\t\t\t 0. Exit" << endl;
+    cout << "-----------------------------" << endl;
+    cout << "| STUDENT MANAGEMENT SYSTEM |" << endl;
+    cout << "-----------------------------" << endl;
+    cout << " 1. Enter New Record" << endl;
+    cout << " 2. Display Record" << endl;
+    cout << " 3. Modify Record" << endl;
+    cout << " 0. Exit" << endl;
 
-    cout << "\t\t\t---------------------------" << endl;
-    cout << "\t\t\tChoose Option:[1/2/3/4]" << endl;
-    cout << "\t\t\t---------------------------" << endl;
+    cout << "---------------------------" << endl;
+    cout << "Choose Option:[1/2/3/4]" << endl;
+    cout << "---------------------------" << endl;
     cout << "Enter Your Choose: ";
     cin >> choice;
 
@@ -39,7 +39,7 @@ menustart:
         do
         {
             insert();
-            cout << "\n\t\t\t Add Another Student Record (Y,N): ";
+            cout << "\n Add Another Student Record (Y,N): ";
             cin >> x;
         } while (x == 'y' || x == 'Y');
         break;
@@ -53,7 +53,7 @@ menustart:
     case 0:
         exit(0);
     default:
-        cout << "\n\t\t\t Invalid choice... Please Try Again..";
+        cout << "\n Invalid choice... Please Try Again..";
     }
 
     goto menustart;
@@ -65,22 +65,22 @@ void student::insert()
     cout << "\n-----------------------------------------------------------------------------------------------------";
     cout << "\n------------------------------------- Add Student Details ---------------------------------------------" << endl;
 
-    cout << "\t\t\tEnter Name: ";
+    cout << "Enter Name: ";
     cin >> name;
-    cout << "\t\t\tEnter Roll No.: ";
+    cout << "Enter Roll No.: ";
     cin >> roll_no;
-    cout << "\t\t\t Enter marks1: ";
-    cin >> marks1;
-    cout<< "\t\t\tEnter marks2: ";
-    cin >> marks2;
-    cout << "\t\t\tEnter marks3: ";
-    cin>> marks3;
-    cout << "\t\t\t Enter marks 4: ";
-    cin >> marks4;
-    cout << "\t\t\t Enter marks5: ";
-    cin >> marks5;  
+    cout << " Enter OOP: ";
+    cin >> OOP;
+    cout<< "Enter DBMS: ";
+    cin >> DBMS;
+    cout << "Enter CN: ";
+    cin>> CN;
+    cout << " Enter OS: ";
+    cin >> OS;
+    cout << " Enter ML: ";
+    cin >> ML;  
     file.open("studentRecord.txt", ios::app | ios::out);
-    file << " " << name << " " << roll_no << " " << marks1 << " " << marks2 << " " << marks3 << " " << marks4 << " "<< marks5  <<"\n";
+    file << " " << name << " " << roll_no << " " << OOP << " " << DBMS << " " << CN << " " << OS << " "<< ML  <<"\n";
     file.close();
 }
 
@@ -95,31 +95,32 @@ void student::display()
     if (!file)
     {
         
-        cout << "\n\t\t\tNo Data Is Present...";
+        cout << "\nNo Data Is Present...";
         file.close();
     }
     else
     {
-        file >> name >> roll_no >> marks1>>marks2 >> marks3 >> marks4 >>marks5;
+        file >> name >> roll_no >> OOP>>DBMS >> CN >> OS >>ML;
         while (!file.eof())
         {
-            cout << "\n\n\t\t\t Student No.: " << total++ << endl;
-            cout << "\t\t\t Student Name: " << name << endl;
-            cout << "\t\t\t Student Roll No.: " << roll_no << endl;
-            cout << "\t\t\t Student Marks1: " << marks1 << endl;
-            cout << "\t\t\t Student Marks2: " << marks2 << endl;
-            cout << "\t\t\t Student Marks3: " << marks3 << endl;
-            cout << "\t\t\t Student Marks4 " << marks4 << endl;
-            cout << "\t\t\t Student Marks5 " << marks5 << endl;
-            file >> name >> roll_no >> marks1 >> marks2 >> marks3 >> marks4 >> marks5;
+            cout << "\n\n Student No.: " << total++ << endl;
+            cout << " Student Name: " << name << endl;
+            cout << " Student Roll No.: " << roll_no << endl;
+            cout << " Student OOP: " << OOP << endl;
+            cout << " Student DBMS: " << DBMS << endl;
+            cout << " Student CN: " << CN << endl;
+            cout << " Student OS " << OS << endl;
+            cout << " Student ML " << ML << endl;
+            file >> name >> roll_no >> OOP >> DBMS >> CN >> OS >> ML;
         }
         if (total == 0)
         {
-            cout << "\n\t\t\tNo Data Is Present...";
+            cout << "\nNo Data Is Present...";
         }
     }
     file.close();
 }
+
 void student::modify() 
 {
     (void)system("cls");
@@ -131,42 +132,42 @@ void student::modify()
     file.open("studentRecord.txt", ios::in);
     if (!file)
     {
-        cout << "\n\t\t\tNo Data is Present..";
+        cout << "\nNo Data is Present..";
     }
     else
     {
         cout << "\nEnter Roll No. of Student which you want to Modify: ";
         cin >> rollno;
         file1.open("record.txt", ios::app | ios::out);
-        file >> name >> roll_no >> marks1 >> marks2 >> marks3 >> marks4 >> marks5;
+        file >> name >> roll_no >> OOP >> DBMS >> CN >> OS >> ML;
         while (!file.eof())
         {
             if (rollno != roll_no)
 
-                file1 << " " << name << " " << roll_no << " " << marks1 << " " << marks2 << " " << marks3 << " " << marks4 << " "<< marks5<<"\n";
+                file1 << " " << name << " " << roll_no << " " << OOP << " " << DBMS << " " << CN << " " << OS << " "<< ML<<"\n";
             else
             {
-                cout << "\n\t\t\tEnter Name: ";
+                cout << "\nEnter Name: ";
                 cin >> name;
-                cout << "\t\t\tEnter Roll No.: ";
+                cout << "Enter Roll No.: ";
                 cin >> roll_no;
-                cout << "\t\t\tEnter Marks1: ";
-                cin >> marks1;
-                cout << "\t\t\tEnter Marks2: ";
-                cin >> marks2;
-                cout << "\t\t\tEnter Marks3: ";
-                cin >> marks3;
-                cout << "\t\t\tEnter Marks4: ";
-                cin >> marks4;
-                cout << "\t\t\tEnter Marks5: ";
-                cin >> marks5;
-                file1 << " " << name << " " << roll_no << " " << marks1 << " " << marks2 << " " << marks3 << " " << marks4 << " "<< marks5 <<"\n";
+                cout << "Enter OOP: ";
+                cin >> OOP;
+                cout << "Enter DBMS: ";
+                cin >> DBMS;
+                cout << "Enter CN: ";
+                cin >> CN;
+                cout << "Enter OS: ";
+                cin >> OS;
+                cout << "Enter ML: ";
+                cin >> ML;
+                file1 << " " << name << " " << roll_no << " " << OOP << " " << DBMS << " " << CN << " " << OS << " "<< ML <<"\n";
                 found++;
             }
-            file >> name >> roll_no >> marks1 >> marks2 >> marks3 >> marks4 >> marks5;
+            file >> name >> roll_no >> OOP >> DBMS >> CN >> OS >> ML;
             if (found == 0)
             {
-                cout << "\n\n\t\t\t Student Roll No. Not Found....";
+                cout << "\n\n Student Roll No. Not Found....";
             }
         }
         file1.close();
@@ -175,7 +176,6 @@ void student::modify()
         rename("record.txt", "studentRecord.txt");
     }
 }
-
 int main()
 {
     student project;
